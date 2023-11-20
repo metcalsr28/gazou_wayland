@@ -4,18 +4,6 @@ Gazou is a Japanese and Chinese OCR application written in C++. It utilizes imag
 
 ## Installation
 
-### Windows
-
-You can grab the latest portable zip build from the [releases](https://github.com/kamui-fin/gazou/releases). Simply unzip and execute `gazou.exe` and the app should run.
-
-### Arch
-
-Since this is packaged in the AUR, you can install it with any AUR helper like:
-
-```
-paru -S gazou-git
-```
-
 ## Building from source
 
 ### Dependencies
@@ -37,28 +25,9 @@ git clone --recursive https://github.com/kamui-fin/gazou.git
 cd gazou
 mkdir build
 cd build
-cmake .. -DGUI=ON
+cmake .. -DGUI=OFF
 sudo make install
 ```
-
-#### Wayland
-
-For wayland users, `gazou` must be compiled with `-DGUI=OFF` and use the equally functional command line interface.
-This is due to the fact that Wayland does not support applications registering their own global hotkeys as a security measure.
-
-## GUI
-
-You can run the program by typing `gazou` in your terminal. It runs in the background and should appear in your system tray.
-If you click on the app in the tray, a settings dialog should appear.
-In here, you can customize the keybinds to your liking. The default hotkeys are:
-
-- `Alt+A`: Vertical OCR
-- `Alt+D`: Horizontal OCR
-- `Alt+S`: Repeat the previous OCR
-
-When you perform an OCR, the result text gets copied to the clipboard.
-
-Just to clarify the language option names:
 
 - `jpn`: Japanese
 - `chi_sim`: Simplified Chinese
@@ -95,3 +64,9 @@ You can also run gazou by pipeing an image into the CLI:
 ```
 cat img.png | gazou
 ```
+
+### Hyprland
+
+To make gazou work with hyprland, simply add these lines to your ~/.config/hypr/hyprland.conf
+bind = ALT,A,exec, hyprshot -m region -r | gazou | wl-copy 
+bind = ALT,D,exec, hyprshot -m region -r | gazou -v | wl-copy
