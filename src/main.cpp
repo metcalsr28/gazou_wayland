@@ -191,7 +191,7 @@ int main(int argc, char **argv) {
 
     #ifdef Q_OS_LINUX
         if (!isatty(fileno(stdin))) {
-            std::cout << "Reading from stdin" << std::endl;
+            //std::cout << "Reading from stdin" << std::endl;
             char buffer[4096];
             size_t bytesRead;
 
