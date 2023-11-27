@@ -68,5 +68,7 @@ cat img.png | gazou
 ### Hyprland
 
 To make gazou work with hyprland, simply add these lines to your ~/.config/hypr/hyprland.conf
+```
 bind = ALT,A,exec, hyprshot -m region -r | gazou | wl-copy 
 bind = ALT,D,exec, hyprshot -m region -r | gazou -v | wl-copy
+```
